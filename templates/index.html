@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>АлкоЛицензииХМАО</title>
+</head>
+
+<body>
+<div class="container">
+    <main>
+    <h2>Проверка наличия алколицензии по ХМАО-Югре)</h2>
+
+    <form method="post" id="batteryform" class="needs-validation" action="" novalidate>
+
+        <label for="map" class="form-label">Нажмите на карте на здание, где находится вход в торговый объект, в котором идёт продажа алкоголя (кроме пива)</label>
+        <br>
+        <small class="text-muted"><i>Дайте разрешение в случае запроса о местоположении!</i></small>
+        <div id="mapdiv" class="embed-responsive embed-responsive-21by9">
+            <iframe class="embed-responsive-item" src="/map" allowfullscreen></iframe>
+        </div>
+        <div class="col-12">
+            <input type='text' name='id_lat' id='id_lat' class="form-control d-none" data-validate="true" placeholder required >
+            <div class="invalid-feedback">
+                на карте необходимо указать здание, в котором находится торговый объект
+            </div>
+        </div>
+
+        <script>
+
+        var Name = "Unknown OS";
+        if (navigator.userAgent.indexOf("Win") != -1) Name =
+          "Windows OS";
+        if (navigator.userAgent.indexOf("Mac") != -1) Name =
+          "Macintosh";
+        if (navigator.userAgent.indexOf("Linux") != -1) Name =
+          "Linux OS";
+        if (navigator.userAgent.indexOf("Android") != -1) Name =
+          "Android OS";
+        if (navigator.userAgent.indexOf("like Mac") != -1) Name =
+          "iOS";
+        if ((Name == "iOS") || (Name == "Android OS")) {
+            document.getElementById("mapdiv").className = "embed-responsive embed-responsive-1by1";}
+        </script>
+        <h2 class="d-none">AлкоСТОП</h2>
+        <input type='hidden' readonly name='id_lng' id='id_lng' size='15' border='1' value=''>
+        <hr class="my-4">
+
+
+
+
+        <button type="submit" id="btnFetch" class="w-100 btn btn-primary btn-lg">Отправить</button>
+    </form>
+    </main>
+</div>
+<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $("#btnFetch").click(function() {
+
+                // disable button
+            if($("#id_lat").val()!='') {
+                $(this).prop("disabled", true);
+                // add spinner to button
+                $(this).html(
+                    `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Загрузка...`
+                );
+                $("#batteryform").submit();
+            }
+        });
+        });
+</script>
+</body>
+</html>

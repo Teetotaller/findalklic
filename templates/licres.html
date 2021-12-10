@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>АлкоЛицензииХМАО</title>
+</head>
+<body class="d-flex h-100 text-center">
+<main class="container">
+
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    {% if notaddr %}
+      <p class="lead">Адрес не установлен. Повторите поиск.</p>
+      <p class="lead"><a class="btn btn-lg btn-primary" href="/lic" role="button">&nbsp;Проверить ещё?&nbsp;</a></p>
+    {% else %}
+      {% if notfind %}
+        <p class="lead">Информация о действующей алколицензии по адресу {{city}}, {{street}}, {{house}} в реестре по состоянию на начало текущего месяца НЕ НАЙДЕНА!. </p>
+        <p class="lead"><a class="btn btn-lg btn-primary" href="/lic" role="button">&nbsp;Проверить ещё?&nbsp;</a></p>
+      {% else %}
+      <p class="text-left"> По адресу {{city}}, {{street}}, {{house}} найдены следующие алколицензии: </p>
+      {% for lic in licus %}
+          <div class="table-responsive-sm">
+          <table class="table align-middle table-bordered border-primary table-sm table-striped table-hover">
+            <tbody>
+                <tr>
+                    <td><p class="text-justify">Организация</p></td>
+                    <td><p class="text-justify">{{lic.nameorg}}</p></td>
+                </tr>
+                <tr>
+                    <td><p class="text-justify">ИНН</p></td>
+                    <td><p class="text-justify">{{lic.innorg}}</p></td>
+                </tr>
+                <tr>
+                    <td><p class="text-justify">Статус лицензии</p></td>
+                    <td><p class="text-justify">{{lic.tiplic}}</p></td>
+                </tr>
+                <tr>
+                    <td><p class="text-justify">№ лицензии</p></td>
+                    <td><p class="text-justify">{{lic.numlic}}</p></td>
+                </tr>
+                <tr>
+                    <td><p class="text-justify">№ бланка лицензии</p></td>
+                    <td><p class="text-justify">{{lic.numblanklic}}</p></td>
+                </tr>
+                <tr>
+                    <td><p class="text-justify">Действительна до</p></td>
+                    <td><p class="text-justify">{{lic.date_endlic}}</p></td>
+                </tr>
+                <tr>
+                    <td><p class="text-justify">Вид лицензируемой деятельности</p></td>
+                    <td><p class="text-justify">{{lic.vidlic}}</p></td>
+                </tr>
+                <tr>
+                    <td><p class="text-justify">Уточнённое местоположение</p></td>
+                    <td><p class="text-justify">{{lic.addrobj}}</p></td>
+                </tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="container">
+            <hr class="my-4">
+          </div>
+
+      {% endfor %}
+      <p class="lead"><a class="btn btn-lg btn-primary" href="/" role="button">&nbsp;Проверить ещё?&nbsp;</a></p>
+      {% endif %}
+    {% endif %}
+
+  </div>
+</main>
+<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
+</body>
+</html>

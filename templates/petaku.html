@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bfe95d39c82f490486e495a3bad28515 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_bfe95d39c82f490486e495a3bad28515" ></div>
+        
+</body>
+<script>    
+    
+            var map_bfe95d39c82f490486e495a3bad28515 = L.map(
+                "map_bfe95d39c82f490486e495a3bad28515",
+                {
+                    center: [61.253951181742984, 73.39638359095748],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d816d68093f347d89f5d203578574b36 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_bfe95d39c82f490486e495a3bad28515);
+        
+    
+            var locate_control_2ea17c6de9434a29a24f6d46c952114d = L.control.locate(
+                {}
+            ).addTo(map_bfe95d39c82f490486e495a3bad28515);
+            
+                locate_control_2ea17c6de9434a29a24f6d46c952114d.start();
+            
+        
+    
+                var lat_lng_popup_302e31eb1e1d42f8be939b5a0d9d0fc9 = L.popup();
+                function latLngPop(e) {
+                    lat_lng_popup_302e31eb1e1d42f8be939b5a0d9d0fc9
+                        .setLatLng(e.latlng)
+                        .setContent("<div align=center>Вход" +
+                                    "<br>здесь</div>")
+                        .openOn(map_bfe95d39c82f490486e495a3bad28515);
+                    parent.document.getElementById("id_lng").value = e.latlng.lng.toFixed(4);
+                    parent.document.getElementById("id_lat").value = e.latlng.lat.toFixed(4);
+                    }
+                map_bfe95d39c82f490486e495a3bad28515.on('click', latLngPop);
+            
+</script>
